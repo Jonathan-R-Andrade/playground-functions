@@ -15,8 +15,13 @@ function splitSentence(frase) {
 }
 
 // Desafio 4
-function concatName() {
-  // seu código aqui
+function concatName(arrStrings) {
+  if (arrStrings.length === 0)
+    return '';
+  else if (arrStrings.length === 1)
+    return arrStrings[0] + ", " + arrStrings[0];
+  else
+    return arrStrings[arrStrings.length - 1] + ", " + arrStrings[0];
 }
 
 // Desafio 5
