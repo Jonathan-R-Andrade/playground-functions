@@ -86,11 +86,59 @@ function fizzBuzz(arrNumeros) {
 }
 
 // Desafio 9
-function encode() {
-  // seu código aqui
+function encode(str) {
+  let retorno = "";
+
+  for (let i = 0; i < str.length; i += 1) {
+    switch (str[i]) {
+      case 'a':
+        retorno += 1;
+        break;
+      case 'e':
+        retorno += 2;
+        break;
+      case 'i':
+        retorno += 3;
+        break;
+      case 'o':
+        retorno += 4;
+        break;
+      case 'u':
+        retorno += 5;
+        break;
+      default:
+        retorno += str[i];
+    }
+  }
+
+  return retorno;
 }
-function decode() {
-  // seu código aqui
+function decode(str) {
+  let retorno = "";
+
+  for (let i = 0; i < str.length; i += 1) {
+    switch (str[i]) {
+      case '1':
+        retorno += 'a';
+        break;
+      case '2':
+        retorno += 'e';
+        break;
+      case '3':
+        retorno += 'i';
+        break;
+      case '4':
+        retorno += 'o';
+        break;
+      case '5':
+        retorno += 'u';
+        break;
+      default:
+        retorno += str[i];
+    }
+  }
+
+  return retorno;
 }
 
 module.exports = {
