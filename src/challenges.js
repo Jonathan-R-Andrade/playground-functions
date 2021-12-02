@@ -16,12 +16,13 @@ function splitSentence(frase) {
 
 // Desafio 4
 function concatName(arrStrings) {
-  if (arrStrings.length === 0)
+  if (arrStrings.length === 0) {
     return '';
-  else if (arrStrings.length === 1)
-    return arrStrings[0] + ", " + arrStrings[0];
-  else
-    return arrStrings[arrStrings.length - 1] + ", " + arrStrings[0];
+  }
+  if (arrStrings.length === 1) {
+    return arrStrings[0].concat(', ', arrStrings[0]);
+  }
+  return arrStrings[arrStrings.length - 1].concat(', ', arrStrings[0]);
 }
 
 // Desafio 5
@@ -30,30 +31,26 @@ function footballPoints(wins, ties) {
 }
 
 // Desafio 6
-function highestCount(arrNumeros) {
-  let numeroRepeticoes = {
-  }
-
-  if (arrNumeros.length === 0)
-    return undefined;
-
-  let maior = arrNumeros[0];
-  numeroRepeticoes[maior] = 1;
-
+function maxNumber(arrNumeros) {
+  let max = arrNumeros[0];
   for (let i = 1; i < arrNumeros.length; i += 1) {
+    if (arrNumeros[i] > max) {
+      max = arrNumeros[i];
+    }
+  }
+  return max;
+}
+function highestCount(arrNumeros) {
+  let numeroRepeticoes = {};
+  for (let i = 0; i < arrNumeros.length; i += 1) {
     let numero = arrNumeros[i];
     if (numeroRepeticoes[numero] === undefined) {
       numeroRepeticoes[numero] = 1;
-      if (numero > maior)
-        maior = numero;
-      continue;
+    } else {
+      numeroRepeticoes[numero] += 1;
     }
-    numeroRepeticoes[numero] += 1;
-    if (numero > maior)
-      maior = numero;
   }
-
-  return numeroRepeticoes[maior];
+  return numeroRepeticoes[maxNumber(arrNumeros)];
 }
 
 // Desafio 7
@@ -61,83 +58,52 @@ function catAndMouse(mouse, cat1, cat2) {
   let distanciaCat1 = Math.abs(cat1 - mouse);
   let distanciaCat2 = Math.abs(cat2 - mouse);
 
-  if (distanciaCat1 < distanciaCat2)
-    return "cat1";
-  else if (distanciaCat2 < distanciaCat1)
-    return "cat2";
-  else
-    return "os gatos trombam e o rato foge";
+  if (distanciaCat1 < distanciaCat2) {
+    return 'cat1';
+  }
+  if (distanciaCat2 < distanciaCat1) {
+    return 'cat2';
+  }
+  return 'os gatos trombam e o rato foge';
 }
 
 // Desafio 8
+function trocarNumeroPorPalavra(numero) {
+  if ((numero % 3) === 0 && (numero % 5) === 0) {
+    return 'fizzBuzz';
+  }
+  if ((numero % 3) === 0) {
+    return 'fizz';
+  }
+  if ((numero % 5) === 0) {
+    return 'buzz';
+  }
+  return 'bug!';
+}
 function fizzBuzz(arrNumeros) {
   let retorno = [];
   for (let numero of arrNumeros) {
-    if ((numero % 3) === 0 && (numero % 5) === 0)
-      retorno.push("fizzBuzz");
-    else if ((numero % 3) === 0)
-      retorno.push("fizz");
-    else if ((numero % 5) === 0)
-      retorno.push("buzz");
-    else
-      retorno.push("bug!");
+    retorno.push(trocarNumeroPorPalavra(numero));
   }
   return retorno;
 }
 
 // Desafio 9
 function encode(str) {
-  let retorno = "";
-
-  for (let i = 0; i < str.length; i += 1) {
-    switch (str[i]) {
-      case 'a':
-        retorno += 1;
-        break;
-      case 'e':
-        retorno += 2;
-        break;
-      case 'i':
-        retorno += 3;
-        break;
-      case 'o':
-        retorno += 4;
-        break;
-      case 'u':
-        retorno += 5;
-        break;
-      default:
-        retorno += str[i];
-    }
-  }
-
+  let retorno = str.replace(/a/g, '1');
+  retorno = retorno.replace(/e/g, '2');
+  retorno = retorno.replace(/i/g, '3');
+  retorno = retorno.replace(/o/g, '4');
+  retorno = retorno.replace(/u/g, '5');
   return retorno;
 }
+
 function decode(str) {
-  let retorno = "";
-
-  for (let i = 0; i < str.length; i += 1) {
-    switch (str[i]) {
-      case '1':
-        retorno += 'a';
-        break;
-      case '2':
-        retorno += 'e';
-        break;
-      case '3':
-        retorno += 'i';
-        break;
-      case '4':
-        retorno += 'o';
-        break;
-      case '5':
-        retorno += 'u';
-        break;
-      default:
-        retorno += str[i];
-    }
-  }
-
+  let retorno = str.replace(/1/g, 'a');
+  retorno = retorno.replace(/2/g, 'e');
+  retorno = retorno.replace(/3/g, 'i');
+  retorno = retorno.replace(/4/g, 'o');
+  retorno = retorno.replace(/5/g, 'u');
   return retorno;
 }
 
