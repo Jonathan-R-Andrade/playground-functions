@@ -72,8 +72,19 @@ function generatePhoneNumber(arrPhoneNumbers) {
 }
 
 // Desafio 12
-function triangleCheck() {
-  // seu código aqui
+function triangleCheckSide(lineA, lineB, lineC) {
+  if (lineA >= (lineB + lineC) || lineA <= Math.abs(lineB - lineC)) {
+    return false;
+  }
+  return true;
+}
+
+function triangleCheck(lineA, lineB, lineC) {
+  if (!triangleCheckSide(lineA, lineB, lineC) || !triangleCheckSide(lineB, lineA, lineC)
+    || !triangleCheckSide(lineC, lineA, lineB)) {
+    return false;
+  }
+  return true;
 }
 
 // Desafio 13
